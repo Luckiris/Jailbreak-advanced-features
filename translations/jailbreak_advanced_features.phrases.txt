@@ -1,0 +1,66 @@
+"Phrases"
+{
+	"Command e used"
+	{
+        "#format"		"{1:s}"
+		"en"			"[{green}OBG{default}] {1} has been yield."
+		"de"			"[{green}OBG{default}] {1} hat sich ergeben."
+	}
+
+	"Command e already used"
+	{
+		"en"			"[{green}OBG{default}] {darkred} You already used the command {green} !e."
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !e."
+	}	
+
+	"Command v used"
+	{
+        "#format"		"{1:s}"
+		"en"			"[{green}OBG{default}] {1} denies the Game."
+		"de"			"[{green}OBG{default}] {1} hat das Spiel verweigert."
+	}
+
+	"Command v already used"
+	{
+		"en"			"[{green}OBG{default}] {darkred} You already used the command {green} !v."
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !v."
+	}
+
+	"Command wdh used"
+	{
+        "#format"		"{1:s}"
+		"en"			"[{green}OBG{default}] {1} resquests a repetition."
+		"de"			"[{green}OBG{default}] {1} möchte eine Wiederholung"
+	}
+
+	"Command wdh already used"
+	{
+		"en"			"[{green}OBG{default}] {darkred} You already used the command {green} !v."
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !wdh."
+	}
+
+	"Command heal used"
+	{
+        "#format"		"{1:s}"
+		"en"			"[{green}OBG{default}] {1} requests to heal himself. "
+		"de"			"[{green}OBG{default}] {1} möchte sich heilen."
+	}
+
+	"Command heal already used"
+	{
+		"en"			"[{green}OBG{default}] {darkred} You already used the command {green} !v."
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !heal."
+	}
+
+	"Command cooldown"
+	{
+		"en"			"[{green}OBG{default}] {darkred} Stop spamming !"
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !heal."
+	}	
+
+	"Wrong team"
+	{
+		"en"			"[{green}OBG{default}] {darkred} You are not in the good team to use that command !"
+		"de"			"[{green}OBG{default}] {darkred} Du hast diesen Befehl bereits genutzt {green} !heal."
+	}						
+}

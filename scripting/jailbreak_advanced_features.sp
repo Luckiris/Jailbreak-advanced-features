@@ -21,6 +21,7 @@
 #include <sdktools>
 #include <multicolors>
 #include <cstrike>
+#include <smlib>
 
 #pragma newdecls required
 
@@ -33,12 +34,13 @@ Handle hasCooldown[MAXPLAYERS + 1];
 
 ConVar cvTimer;
 ConVar cvCooldown;
+ConVar cvKnifeReset;
 
 public Plugin myinfo = {
 	name = "Ostblock-Gaming - Jailbreak advanced features",
 	author = "Luckiris",
 	description = "Plugin to add a few commands",
-	version = "1.0",
+	version = "1.1",
 	url = "https://ostblock-gaming.de"
 };
 
@@ -67,6 +69,7 @@ public void OnPluginStart(){
     */
     cvTimer = CreateConVar("sm_jailbreak_advanced_features_timer_color", "30.0", "Time to reset the colors");
     cvCooldown = CreateConVar("sm_jailbreak_advanced_features_timer_cooldown", "2.0", "Commands cooldown");
+    cvKnifeReset = CreateConVar("sm_jailbreak_advanced_features_timer_knife", "30.0", "Cooldown to reset knife");
     AutoExecConfig(true, "jailbreak_advanced_features");
 
     /**
@@ -131,6 +134,8 @@ public Action CommandE(int client, int args){
         GetClientName(client, name, sizeof(name));
         CreateTimer(cvTimer.FloatValue, TimerReset, GetClientUserId(client));
         hasCooldown[client] = CreateTimer(cvCooldown.FloatValue, TimerCooldown, GetClientUserId(client));
+        Client_RemoveAllWeapons(client);
+        CreateTimer(cvKnifeReset.FloatValue, TimerKnife, GetClientUserId(client));
         CPrintToChatAll("%t", "Command e used", name);
     } else  {
         CPrintToChat(client, "%t", "Command e already used");
@@ -170,7 +175,8 @@ public Action CommandV(int client, int args){
         SetEntityRenderColor(client, 0, 0, 255, 255);
         GetClientName(client, name, sizeof(name));
         CreateTimer(cvTimer.FloatValue, TimerReset, GetClientUserId(client));
-        hasCooldown[client] = CreateTimer(cvCooldown.FloatValue, TimerCooldown, GetClientUserId(client));       
+        hasCooldown[client] = CreateTimer(cvCooldown.FloatValue, TimerCooldown, GetClientUserId(client));  
+
         CPrintToChatAll("%t", "Command v used", name);
     } else  {
         CPrintToChat(client, "%t", "Command v already used");
@@ -275,6 +281,14 @@ public Action TimerCooldown(Handle timer, any data){
     int client = GetClientOfUserId(data);
     if (IsValid(client)){
         hasCooldown[client] = INVALID_HANDLE;
+    }
+    return Plugin_Handled;
+}
+
+public Action TimerKnife(Handle timer, any data){
+    int client = GetClientOfUserId(data);
+    if (IsValid(client)){
+        GivePlayerItem(client, "weapon_knife");
     }
     return Plugin_Handled;
 }
